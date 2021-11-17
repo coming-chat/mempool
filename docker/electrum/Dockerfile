@@ -17,6 +17,7 @@ RUN set -x \
 	&& test -f /usr/local/bin/electrum \
 	&& rm -vrf /tmp/Electrum-${VERSION}.tar.gz /tmp/Electrum-${VERSION}.tar.gz.asc ${HOME}/.gnupg \
 	&& apt-get purge --autoremove -y python3-wheel python3-pip python3-setuptools python3-dev build-essential libsecp256k1-dev curl gpg gpg-agent dirmngr \
+	&& pip3 install cryptography pycryptodomex \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/* \
 	&& useradd -d /home/mempool -m mempool \
 	&& mkdir /electrum \
