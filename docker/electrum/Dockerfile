@@ -8,7 +8,9 @@ ENV VERSION 4.0.9
 RUN set -x \
 	&& apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends gpg gpg-agent dirmngr \
-	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends wget xpra python3-pyqt5 python3-wheel python3-pip python3-setuptools libsecp256k1-0 libsecp256k1-dev python3-numpy python3-dev build-essential \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends wget xpra python3-pyqt5 python3-wheel python3-pip python3-setuptools libsecp256k1-0 libsecp256k1-dev python3-numpy python3-dev build-essential libssl-dev libffi-dev cargo snapd \
+	&&  snap install rustup --classic \
+	&&  rustup default stable \
 	&& pip3 install setuptools-rust cryptography pycryptodomex \
 	&& wget -O /tmp/Electrum-${VERSION}.tar.gz https://download.electrum.org/${VERSION}/Electrum-${VERSION}.tar.gz \
 	&& wget -O /tmp/Electrum-${VERSION}.tar.gz.asc https://download.electrum.org/${VERSION}/Electrum-${VERSION}.tar.gz.asc \
