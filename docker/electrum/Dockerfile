@@ -30,5 +30,5 @@ ENV HOME /home/mempool
 WORKDIR /home/mempool
 VOLUME /electrum
 
-CMD ["/usr/bin/xpra", "start", ":100", "--start-child=/usr/local/bin/electrum", "--bind-tcp=0.0.0.0:50002","daemon", "--notifications=no", "--mdns=no", "--pulseaudio=no", "--html=off", "--speaker=disabled", "--microphone=disabled", "--webcam=no", "--printing=no", "--dbus-launch=", "--exit-with-children"]
+CMD ["/usr/bin/xpra", "start", ":100", "--start-child=/usr/local/bin/electrum", "--bind-tcp=0.0.0.0:50002","--daemon", "--notifications=no", "--mdns=no", "--pulseaudio=no", "--html=off", "--speaker=disabled", "--microphone=disabled", "--webcam=no", "--printing=no", "--dbus-launch=", "--exit-with-children"]
 ENTRYPOINT ["electrum"]
