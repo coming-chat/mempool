@@ -8,8 +8,8 @@ ENV VERSION 4.0.9
 RUN set -x \
 	&& apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends gpg gpg-agent dirmngr \
-	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends wget xpra python3-pyqt5 python3-wheel python3-pip python3-setuptools libsecp256k1-0 libsecp256k1-dev python3-numpy python3-dev build-essential python3-setuptools \
-	&& pip3 install cryptography pycryptodomex \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends wget xpra python3-pyqt5 python3-wheel python3-pip python3-setuptools libsecp256k1-0 libsecp256k1-dev python3-numpy python3-dev build-essential \
+	&& pip3 install setuptools-rust cryptography pycryptodomex \
 	&& wget -O /tmp/Electrum-${VERSION}.tar.gz https://download.electrum.org/${VERSION}/Electrum-${VERSION}.tar.gz \
 	&& wget -O /tmp/Electrum-${VERSION}.tar.gz.asc https://download.electrum.org/${VERSION}/Electrum-${VERSION}.tar.gz.asc \
 	&& gpg --keyserver keyserver.ubuntu.com --recv-keys 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6 \
