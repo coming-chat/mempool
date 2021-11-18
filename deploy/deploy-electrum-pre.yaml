@@ -23,6 +23,7 @@ spec:
       containers:
         - name: container-electrum-server-pre
           image: $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BUILD_NUMBER
+          command: []
           resources: {}
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File

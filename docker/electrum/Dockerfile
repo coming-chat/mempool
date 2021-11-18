@@ -20,14 +20,14 @@ RUN set -x \
 	&& rm -vrf /tmp/Electrum-${VERSION}.tar.gz /tmp/Electrum-${VERSION}.tar.gz.asc ${HOME}/.gnupg \
 	&& apt-get purge --autoremove -y python3-wheel python3-pip python3-setuptools python3-dev build-essential libsecp256k1-dev curl gpg gpg-agent dirmngr \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/* \
-	# && useradd -d /home/mempool -m mempool \
-	&& mkdir /electrum 
-# && ln -s /electrum /home/mempool/.electrum \
-# && chown mempool:mempool /electrum
+	&& useradd -d /home/mempool -m mempool \
+	&& mkdir /electrum \
+	&& ln -s /electrum /home/mempool/.electrum \
+	&& chown mempool:mempool /electrum
 
-# USER mempool	
-# ENV HOME /home/mempool
-# WORKDIR /home/mempool
+USER mempool	
+ENV HOME /home/mempool
+WORKDIR /home/mempool
 VOLUME /electrum
 
 CMD ["/usr/bin/xpra", "start", ":100", "--start-child=/usr/local/bin/electrum", "--bind-tcp=0.0.0.0:50002","--daemon=yes", "--notifications=no", "--mdns=no", "--pulseaudio=no", "--html=off", "--speaker=disabled", "--microphone=disabled", "--webcam=no", "--printing=no", "--dbus-launch=", "--exit-with-children"]
